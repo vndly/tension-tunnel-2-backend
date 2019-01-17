@@ -2,8 +2,8 @@
 
 package com.expressjs
 
-external interface Response {
-
+external interface Response
+{
     /**
      * Set status `code`.
      */
@@ -46,6 +46,7 @@ external interface Response {
      *     res.send(404);
      */
     fun send(data: String)
+
     fun send(code: Int, data: String)
 
     /**
@@ -59,6 +60,7 @@ external interface Response {
      *     res.json(404, 'I dont have that');
      */
     fun json(data: Any)
+
     fun json(code: Int, data: Any)
 
     /**
@@ -72,6 +74,7 @@ external interface Response {
      *     res.jsonp(404, 'I dont have that');
      */
     fun jsonp(data: Any)
+
     fun jsonp(code: Int, data: Any)
 
     /**
@@ -115,10 +118,10 @@ external interface Response {
      * @api public
      */
     fun sendFile(path: String)
+
     fun sendFile(path: String, options: Any)
     fun sendFile(path: String, fn: (Error) -> Unit)
     fun sendFile(path: String, options: Any, fn: (Error) -> Unit)
-
 
     /**
      * Transfer the file at the given `path` as an attachment.
@@ -131,6 +134,7 @@ external interface Response {
      * This method uses `res.sendfile()`.
      */
     fun download(path: String)
+
     fun download(path: String, filename: String)
     fun download(path: String, fn: (Error) -> Unit)
     fun download(path: String, filename: String, fn: (Error) -> Unit)
@@ -235,6 +239,7 @@ external interface Response {
      * Aliased as `res.header()`.
      */
     fun set(field: Any): Response
+
     fun set(field: String, value: String?): Response
 
     fun header(field: Any): Response
@@ -313,6 +318,7 @@ external interface Response {
      *    res.redirect('../login'); // /blog/post/1 -> /blog/login
      */
     fun redirect(url: String)
+
     fun redirect(status: Int, url: String)
     fun redirect(url: String, status: Int)
 
@@ -327,6 +333,7 @@ external interface Response {
      *  - `filename`  filename of the view being rendered
      */
     fun render(view: String, options: Any?, callback: (err: Error, html: String) -> Unit)
+
     fun render(view: String, callback: (err: Error, html: String) -> Unit)
 
     val locals: Any

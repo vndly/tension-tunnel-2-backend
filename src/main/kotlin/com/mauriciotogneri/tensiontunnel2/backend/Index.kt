@@ -4,7 +4,6 @@ import com.expressjs.Express
 import com.firebase.admin.Admin
 import com.firebase.admin.firestore.DocumentData
 import com.firebase.functions.Functions
-import kotlin.js.Date
 
 external val exports: dynamic
 
@@ -17,11 +16,11 @@ fun main(args: Array<String>)
     val db = Admin.firestore()
 
     api.get("/v1/hello") { _, res ->
-        res.send("Hello World 4!")
+        res.send("Hello World 6!")
     }
 
     api.post("/v1/tasks") { _, res ->
-        val task = Task(label = "da task", time = Date().getTime())
+        val task = Task(label = "da task", time = 1234)
 
         db.collection("tasks").add(JSON.parse(JSON.stringify(task))).then {
             res.status(200).send("it works!")
@@ -35,4 +34,4 @@ fun main(args: Array<String>)
     exports.api = Functions.https.onRequest(api)
 }
 
-data class Task(val id: String? = undefined, val label: String, val time: Double) : DocumentData
+data class Task(val id: String? = undefined, val label: String, val time: Int) : DocumentData
