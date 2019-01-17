@@ -16,7 +16,7 @@ fun main(args: Array<String>)
     val db = Admin.firestore()
 
     api.get("/v1/hello") { _, res ->
-        res.send("Hello World 6!")
+        res.send("Hello World 8!")
     }
 
     api.post("/v1/tasks") { _, res ->
