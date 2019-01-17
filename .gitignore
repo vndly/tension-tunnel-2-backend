@@ -1,0 +1,5 @@
+.idea
+.gradle
+functions
+build
+package-lock.json
