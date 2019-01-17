@@ -1,5 +1,5 @@
 .idea
 .gradle
-functions
+/functions
 build
 package-lock.json

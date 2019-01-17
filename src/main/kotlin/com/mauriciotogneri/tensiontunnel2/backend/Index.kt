@@ -2,10 +2,13 @@ package com.mauriciotogneri.tensiontunnel2.backend
 
 import com.expressjs.Express
 import com.firebase.admin.Admin
-import com.firebase.admin.firestore.DocumentData
+import com.firebase.firestore.DocumentData
 import com.firebase.functions.Functions
 
 external val exports: dynamic
+
+// https://github.com/m-maillot/FirebaseFunctionToDo
+// https://github.com/theerasan/kotlin-firebase-interface
 
 fun main(args: Array<String>)
 {

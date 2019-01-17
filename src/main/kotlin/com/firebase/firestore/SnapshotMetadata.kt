@@ -1,7 +1,7 @@
-package com.firebase.admin.firestore
+package com.firebase.firestore
 
-external interface SnapshotMetadata {
-
+external interface SnapshotMetadata
+{
     val fromCache: Boolean
     val hasPendingWrites: Boolean
 

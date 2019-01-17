@@ -1,13 +1,14 @@
-package com.firebase.admin.firestore
+package com.firebase.firestore
 
 import kotlin.js.Promise
 
-external interface DocumentReference {
+external interface DocumentReference
+{
     val id: String
     val parent: DocumentReference
 
     fun collection(collectionPath: String): CollectionReference
-    fun delete() : Promise<Unit>
+    fun delete(): Promise<Unit>
     fun get(): Promise<DocumentSnapshot>
     fun get(value: String): Promise<DocumentSnapshot>
 }

@@ -1,7 +1,7 @@
-package com.firebase.wrapper.admin.firestore
+package com.firebase.firestore
 
-external interface QuerySnapshot {
-
+external interface QuerySnapshot
+{
     val docs: Array<QueryDocumentSnapshot>
     val size: Int
     val empty: Boolean

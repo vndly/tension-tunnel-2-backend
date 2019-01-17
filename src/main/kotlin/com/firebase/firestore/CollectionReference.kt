@@ -1,9 +1,9 @@
-package com.firebase.admin.firestore
+package com.firebase.firestore
 
-import com.firebase.wrapper.admin.firestore.QuerySnapshot
 import kotlin.js.Promise
 
-external interface CollectionReference {
+external interface CollectionReference
+{
     val id: String
     val parent: DocumentReference?
     val path: String
