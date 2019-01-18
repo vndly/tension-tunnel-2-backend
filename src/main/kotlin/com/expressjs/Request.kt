@@ -59,4 +59,6 @@ fun Request.queryParam(name: String): String = cleanString(query[name])
 
 fun Request.pathParam(name: String): String = cleanString(param(name))
 
+fun Request.bodyParam(): String = cleanString(body)
+
 fun cleanString(value: dynamic): String = if (value == null) "" else "$value"
