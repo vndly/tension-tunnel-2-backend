@@ -1,9 +1,10 @@
 package com.mauriciotogneri.tensiontunnel2.backend
 
-import com.expressjs.*
+import com.expressjs.Express
 import com.firebase.admin.Admin
-import com.firebase.firestore.DocumentData
 import com.firebase.functions.Functions
+import com.mauriciotogneri.tensiontunnel2.backend.api.Api
+import com.mauriciotogneri.tensiontunnel2.backend.database.Database
 
 external val exports: dynamic
 
@@ -13,46 +14,14 @@ external val exports: dynamic
 fun main(args: Array<String>)
 {
     Admin.initializeApp(Functions.config().firebase)
+    Database.initialize(Admin.firestore())
 
     val api = Express()
 
-    val db = Admin.firestore()
-
-    api.get("/v1/hello") { _, res ->
-        res.send("Hello World 12!")
-    }
-
-    api.post("/v1/tasks/:id") { req, res ->
-        val pathParam = req.pathParam("id")
-        print(pathParam)
-
-        val queryParam = req.queryParam("foo")
-        print(queryParam)
-
-        val headerParam = req.headerParam("test").toInt()
-        print(headerParam)
-
-        val bodyParam = req.bodyParam()
-        print(bodyParam)
-
-        val task = Task(
-                label = queryParam,
-                time = headerParam,
-                description = bodyParam)
-
-        db.collection("tasks").add(JSON.parse(JSON.stringify(task))).then {
-            res.status(200).send("it works! $pathParam $queryParam $headerParam $bodyParam")
-        }.catch { error ->
-            res.status(500).json(error)
-        }
-    }
+    api.get("/v1/hello", Api.test::hello)
+    api.post("/v1/tasks/:id", Api.test::createTask)
 
     val app = Express()
     app.use("/api", api)
     exports.api = Functions.https.onRequest(api)
 }
-
-data class Task(val id: String? = undefined,
-                val label: String,
-                val time: Int,
-                val description: String) : DocumentData
