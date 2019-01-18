@@ -19,7 +19,7 @@ external interface Request
     val cookies: Any
     val method: String
     val params: Any
-    val query: Any
+    val query: dynamic
     val route: Any
     val signedCookies: Any
     val originalUrl: String
@@ -28,7 +28,7 @@ external interface Request
 
     fun get(name: String): Array<String>?
     fun header(name: String): Array<String>?
-    fun param(name: String, defaultValue: dynamic): String
+    fun param(name: String): String
     fun clearCookie(name: String, options: dynamic): Response
     fun `is`(type: String): String
 
@@ -52,3 +52,11 @@ external interface Request
     fun acceptsLanguages(lang: Array<String>): String
     fun acceptsLanguages(vararg lang: Array<String>): String
 }
+
+fun Request.headerParam(name: String): String = cleanString(get(name))
+
+fun Request.queryParam(name: String): String = cleanString(query[name])
+
+fun Request.pathParam(name: String): String = cleanString(param(name))
+
+fun cleanString(value: dynamic): String = if (value == null) "" else "$value"

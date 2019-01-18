@@ -1,3 +1,8 @@
+group 'com.mauriciotogneri.tensiontunnel2'
+version '0.0.1'
+
+apply plugin: 'kotlin2js'
+
 buildscript
 {
     ext.kotlin_version = '1.3.11'
@@ -5,6 +10,8 @@ buildscript
     repositories
     {
         mavenCentral()
+
+        jcenter()
     }
 
     dependencies
@@ -13,14 +20,11 @@ buildscript
     }
 }
 
-group 'com.mauriciotogneri.tensiontunnel2'
-version '0.0.1'
-
-apply plugin: 'kotlin2js'
-
 repositories
 {
     mavenCentral()
+
+    jcenter()
 
     maven
     {
@@ -30,11 +34,7 @@ repositories
 
 dependencies
 {
-    //implementation 'com.github.m-maillot:expresskt:master'
-    //implementation 'com.github.m-maillot:firebasekt:master'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
-
-    testImplementation "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
 }
 
 compileKotlin2Js.kotlinOptions
