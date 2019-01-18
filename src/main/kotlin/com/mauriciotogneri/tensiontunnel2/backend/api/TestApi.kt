@@ -8,7 +8,7 @@ class TestApi : BaseApi()
 {
     fun hello(request: Request, response: Response)
     {
-        response.send("Hello World 14")
+        response.send("Hello World 15")
 
         /*process(response) { database ->
 
