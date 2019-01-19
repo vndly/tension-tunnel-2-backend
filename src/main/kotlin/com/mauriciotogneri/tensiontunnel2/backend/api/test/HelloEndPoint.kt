@@ -8,6 +8,6 @@ class HelloEndPoint : EndPoint
 {
     override fun handle(request: Request, response: Response)
     {
-        response.send("Hello World 16")
+        response.send("Hello World 21")
     }
 }

@@ -7,7 +7,7 @@ external interface DocumentSnapshot
     val ref: DocumentReference
     val metadata: SnapshotMetadata
 
-    fun data(options: SnapshotOptions? = definedExternally): DocumentData?
+    fun data(options: SnapshotOptions? = definedExternally): dynamic
     fun get(fieldPath: String, options: SnapshotOptions? = definedExternally): Any?
     fun isEqual(other: DocumentSnapshot): Boolean
 }

@@ -9,6 +9,8 @@ external interface CollectionReference
     val path: String
 
     fun get(): Promise<QuerySnapshot>
-    fun doc(documentPath: String?): DocumentReference
-    fun add(data: DocumentData): Promise<DocumentReference>
+    fun doc(documentPath: String): DocumentReference
+    fun add(data: dynamic): Promise<DocumentReference>
 }
+
+fun CollectionReference.create(data: Any) = add(JSON.parse(JSON.stringify(data)))
