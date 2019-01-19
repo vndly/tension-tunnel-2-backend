@@ -3,7 +3,8 @@ package com.mauriciotogneri.tensiontunnel2.backend
 import com.expressjs.Express
 import com.firebase.admin.Admin
 import com.firebase.functions.Functions
-import com.mauriciotogneri.tensiontunnel2.backend.api.Api
+import com.mauriciotogneri.tensiontunnel2.backend.api.test.CreateTask
+import com.mauriciotogneri.tensiontunnel2.backend.api.test.HelloEndPoint
 import com.mauriciotogneri.tensiontunnel2.backend.database.Database
 
 external val exports: dynamic
@@ -18,8 +19,8 @@ fun main(args: Array<String>)
 
     val api = Express()
 
-    api.get("/v1/hello", Api.test::hello)
-    api.post("/v1/tasks/:id", Api.test::createTask)
+    api.get("/v1/hello", HelloEndPoint()::handle)
+    api.post("/v1/tasks/:id", CreateTask()::handle)
 
     val app = Express()
     app.use("/api", api)

@@ -1,30 +1,13 @@
-package com.mauriciotogneri.tensiontunnel2.backend.api
+package com.mauriciotogneri.tensiontunnel2.backend.api.test
 
 import com.expressjs.*
 import com.mauriciotogneri.tensiontunnel2.backend.Task
+import com.mauriciotogneri.tensiontunnel2.backend.api.EndPoint
 import com.mauriciotogneri.tensiontunnel2.backend.database.TaskDatabase
 
-class TestApi : BaseApi()
+class CreateTask : EndPoint
 {
-    fun hello(request: Request, response: Response)
-    {
-        response.send("Hello World 15")
-
-        /*process(response) { database ->
-
-            val sessionToken = request.headerParam(Api.SESSION_TOKEN)
-
-            checkNotEmpty(sessionToken)
-
-            val documentAccount = database.account.bySessionToken(sessionToken)
-
-            response
-                    .status(OK)
-                    .json(documentAccount.toJson())
-        }*/
-    }
-
-    fun createTask(request: Request, response: Response)
+    override fun handle(request: Request, response: Response)
     {
         val pathParam = request.pathParam("id")
         print(pathParam)
